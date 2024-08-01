@@ -5,6 +5,8 @@
     android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:background="@color/main_color"
     tools:context=".Fragment.MainFragment.MainFragment" >
 
@@ -41,8 +43,10 @@
                 android:layout_height="200dp">
 
                 <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+
                     android:paddingStart="60dp"
                     android:paddingEnd="60dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -68,7 +72,7 @@
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/View1"
+                    android:id="@+id/bestMovieRcy"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
@@ -86,10 +90,10 @@
                     style="?android:attr/progressBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/View1"
+                    app:layout_constraintBottom_toBottomOf="@+id/bestMovieRcy"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/View1" />
+                    app:layout_constraintTop_toTopOf="@+id/bestMovieRcy" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
@@ -109,7 +113,7 @@
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/View2"
+                    android:id="@+id/categoryRcy"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
@@ -125,10 +129,10 @@
                     style="?android:attr/progressBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/View2"
-                    app:layout_constraintEnd_toEndOf="@+id/View2"
-                    app:layout_constraintStart_toStartOf="@+id/View2"
-                    app:layout_constraintTop_toTopOf="@+id/View2" />
+                    app:layout_constraintBottom_toBottomOf="@+id/categoryRcy"
+                    app:layout_constraintEnd_toEndOf="@+id/categoryRcy"
+                    app:layout_constraintStart_toStartOf="@+id/categoryRcy"
+                    app:layout_constraintTop_toTopOf="@+id/categoryRcy" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
@@ -148,9 +152,9 @@
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/View3"
+                    android:id="@+id/comingMovieRcy"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:clipToPadding="false"
                     android:paddingStart="12dp"
                     android:paddingBottom="70dp"
@@ -166,97 +170,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/View3"
-                    app:layout_constraintStart_toStartOf="@+id/View3"
-                    app:layout_constraintTop_toTopOf="@+id/View3" />
+                    app:layout_constraintEnd_toEndOf="@+id/comingMovieRcy"
+                    app:layout_constraintStart_toStartOf="@+id/comingMovieRcy"
+                    app:layout_constraintTop_toTopOf="@+id/comingMovieRcy" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_gravity="bottom"
-            android:backgroundTint="@color/dark_blue">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        app:tint="@color/white"
-                        android:src="@drawable/btn_1" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Explorer"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        app:tint="@color/white"
-                        android:src="@drawable/btn_2" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Explorer"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        app:tint="@color/white"
-                        android:src="@drawable/btn_3" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Explorer"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"/>
-                </LinearLayout>
-            </LinearLayout>
-        </com.google.android.material.bottomappbar.BottomAppBar>
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
