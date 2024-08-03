@@ -3,10 +3,12 @@ package com.gencer.movieapp.Adapter.FilmListAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gencer.movieapp.Data.FilmListData.Data
 import com.gencer.movieapp.Data.FilmListData.FilmListDataModel
+import com.gencer.movieapp.Fragment.MainFragment.MainFragmentDirections
 import com.gencer.movieapp.databinding.FilmListRowBinding
 import com.gencer.movieapp.databinding.ItemViewPagerSlideBinding
 
@@ -31,5 +33,10 @@ class FilmListAdapter(private  val dataSet:List<Data>) :RecyclerView.Adapter<Fil
            .load(filmData.poster.toString())
            .into(holder.binding.imageView3)
         holder.binding.textView12.text=filmData.title.toString()
+        holder.binding.filmList.setOnClickListener {
+            val action= MainFragmentDirections.actionMainFragmentToDetailsFragment(filmData.id)
+            Navigation.findNavController(it).navigate(action)
+        }
+
     }
 }

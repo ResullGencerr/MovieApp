@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
+import com.gencer.movieapp.Adapter.CategoryAdapter.CategoryAdapter
 import com.gencer.movieapp.Adapter.CommingMoviesAdapter.ComingMoviesAdapter
 import com.gencer.movieapp.Adapter.FilmListAdapter.FilmListAdapter
 import com.gencer.movieapp.Adapter.SliderAdapter.SliderAdapter
@@ -19,7 +20,7 @@ import com.gencer.movieapp.databinding.FragmentMainBinding
 class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-
+    private  val categoryVm : CategoryVm by viewModels()
     private val filmViewModel : FilmListVm by viewModels()
     private  val comingViewModel :ComingMoviesVm by viewModels()
 
@@ -55,6 +56,7 @@ class MainFragment : Fragment() {
 
         filmViewModel.getFilm()
         comingViewModel.commingMovies()
+        categoryVm.getCategory()
         filmViewModel.getFilmList.observe(viewLifecycleOwner, Observer { filmData->
             if(filmData!=null) {
                 binding.progressBar1.visibility = View.GONE
@@ -68,16 +70,14 @@ class MainFragment : Fragment() {
                 binding.progressBar4.visibility=View.GONE
                 val comingMoviesAdapter=ComingMoviesAdapter(commingData.data)
                 binding.comingMovieRcy.adapter=comingMoviesAdapter
-                commingData.data.forEach {
-                    println("Film ${it.title}")
-                }
-
             }
         })
-
-
-
+        categoryVm.categoryData.observe(viewLifecycleOwner, Observer { data->
+            binding.progressBar2.visibility=View.GONE
+            val getCategoryAdapter=CategoryAdapter(data)
+            binding.categoryRcy.adapter=getCategoryAdapter
+        })
 
     }
-
 }
+

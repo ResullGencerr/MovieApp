@@ -2,9 +2,11 @@ package com.gencer.movieapp.Adapter.CommingMoviesAdapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gencer.movieapp.Data.CommingMoviesData.Data
+import com.gencer.movieapp.Fragment.MainFragment.MainFragmentDirections
 import com.gencer.movieapp.databinding.ComingListRowBinding
 
 class ComingMoviesAdapter(private val dataSet:List<Data>):RecyclerView.Adapter<ComingMoviesAdapter.ComingMoviesViewHolder>() {
@@ -29,5 +31,9 @@ class ComingMoviesAdapter(private val dataSet:List<Data>):RecyclerView.Adapter<C
             .load(filmData.poster.toString())
             .into(holder.binding.imageView4)
         holder.binding.textView13.text=filmData.title.toString()
+        holder.binding.comingList.setOnClickListener {
+            val action= MainFragmentDirections.actionMainFragmentToDetailsFragment(filmData.id)
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 }
